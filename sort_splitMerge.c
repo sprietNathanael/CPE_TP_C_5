@@ -29,14 +29,19 @@ int compare_char(char* a, char* b)
 
 Element* sortList(Element* list)
 {
-	splitList(list);
-	printf("List 1 :\n");
-	printList(intermediate_list1);
-	printf("List 2 :\n");
-	printList(intermediate_list2);
-	list = mergeLists(intermediate_list1,intermediate_list2);
-	printf("Merged list : \n");
-	printList(list);
+	while(!isListSorted(list))
+	{
+		printf("NOT SORTED YET !\n");
+		splitList(list);
+		printf("List 1 :\n");
+		printList(intermediate_list1);
+		printf("List 2 :\n");
+		printList(intermediate_list2);
+		list = mergeLists(intermediate_list1,intermediate_list2);
+		printf("Merged list : \n");
+		printList(list);
+	}
+	printf("SORTED !\n");
 
 	return(list);
 }
@@ -148,4 +153,18 @@ Element* mergeLists(Element* list1, Element* list2)
 		}
 	}
 	return(resultList);
+}
+
+int isListSorted(Element* list)
+{
+	Element* intermediateList;
+	while(intermediateList != NULL)
+	{
+		if(intermediateList->next != NULL && compare_char(intermediateList->value,intermediateList->next->value) == 1)
+		{
+			return(0);
+		}
+		intermediateList = intermediateList->next;
+	}
+	return(1);
 }

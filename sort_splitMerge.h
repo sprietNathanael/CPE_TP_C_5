@@ -62,4 +62,13 @@ void splitList(Element* mainList);
  */
 Element* mergeLists(Element* list1, Element* list2);
 
+/**
+ * @brief      Determines if list is sorted.
+ *
+ * @param      list  The list
+ *
+ * @return     1 if list sorted, 0 otherwise.
+ */
+int isListSorted(Element* list);
+
 #endif
