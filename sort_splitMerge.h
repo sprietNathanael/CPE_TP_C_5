@@ -15,6 +15,16 @@
 #ifndef SORT_SPLIT_MERGE_H
 #define SORT_SPLIT_MERGE_H
 
+/*
+***************************** Static variables *************************
+*/
+static Element* intermediate_list1;
+static Element*	intermediate_list2;
+
+/*
+***************************** Functions *************************
+*/
+
 /**
  * @brief      Compares the numeric equivalent of a and b.
  *
