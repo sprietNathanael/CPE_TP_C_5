@@ -26,3 +26,8 @@ int compare_char(char* a, char* b)
 		return(0);
 	}
 }
+
+Element* sortList(Element* list)
+{
+	return(list);
+}

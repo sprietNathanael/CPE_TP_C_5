@@ -21,16 +21,20 @@ void unit_test();
 
 int main(int argc, char const *argv[])
 {
+	unit_test();
 	Element* myList = malloc(sizeof(Element));
 	char* myString = malloc(sizeof(char)*(strlen("3")+1));
 	strcpy(myString,"3");
 	myList->value = myString;
 	myList->next = NULL;
-	char* test[] = {"5","6","2","8","9","11","7","4","10","12","15","20","1","19","13","17"};
-	myList = fillList(myList,test,16);
-	printf(ANSI_COLOR_BLUE"First display :\n"ANSI_COLOR_RESET);
+	char* newElements[] = {"5","6","2","8","9","11","7","4","10","12","15","20","1","19","13","17"};
+	myList = fillList(myList,newElements,16);
+	printf(ANSI_COLOR_BLUE"Unsorted list :\n"ANSI_COLOR_RESET);
 	printList(myList);
-	unit_test();
+	myList = sortList(myList);
+	printf(ANSI_COLOR_BLUE"Sorted list :\n"ANSI_COLOR_RESET);
+	printList(myList);
+
 	emptyList(&myList);
 	if(myList != NULL)
 	{

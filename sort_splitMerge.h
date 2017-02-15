@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "char_list.h"
 
 #ifndef SORT_SPLIT_MERGE_H
 #define SORT_SPLIT_MERGE_H
@@ -24,5 +25,31 @@
  *             as integer
  */
 int compare_char(char* a, char* b);
+
+/**
+ * @brief      Sort an unordered char list
+ *
+ * @param[in]  unsortedList  The unsorted list
+ *
+ * @return     A sorted list
+ */
+Element* sortList(Element* unsortedList);
+
+/**
+ * @brief      Splits a list in two other lists.
+ *
+ * @param[in]  mainList  The main list
+ */
+void splitList(Element* mainList);
+
+/**
+ * @brief      Merges two lists
+ *
+ * @param[in]  list1  The list 1
+ * @param[in]  list2  The list 2
+ *
+ * @return     The merged list
+ */
+Element* mergeLists(Element* list1, Element* list2);
 
 #endif
