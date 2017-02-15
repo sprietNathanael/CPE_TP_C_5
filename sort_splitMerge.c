@@ -34,6 +34,9 @@ Element* sortList(Element* list)
 	printList(intermediate_list1);
 	printf("List 2 :\n");
 	printList(intermediate_list2);
+	list = mergeLists(intermediate_list1,intermediate_list2);
+	printf("Merged list : \n");
+	printList(list);
 
 	return(list);
 }
@@ -91,4 +94,58 @@ void splitList(Element* unsortedList)
 	// End the intermediate lists
 	list1->next = NULL;
 	list2->next = NULL;
+}
+
+Element* mergeLists(Element* list1, Element* list2)
+{
+	Element* resultList = NULL;
+	Element* intermediate_reslut_list = NULL;
+	int list1_end, list2_end = 0;
+	printf("Merging \n");
+
+	while(list1 != NULL || list2 != NULL)
+	{
+		list1_end = (list1 == NULL);
+		list2_end = (list2 == NULL);
+		while(!list1_end || !list2_end)
+		{
+			if(list2_end || (!list1_end && compare_char(list1->value,list2->value) == 2))
+			{
+				if(intermediate_reslut_list == NULL)
+				{
+					intermediate_reslut_list = list1;
+					resultList = intermediate_reslut_list;
+				}
+				else
+				{
+					intermediate_reslut_list->next = list1;
+					intermediate_reslut_list = intermediate_reslut_list->next;
+				}
+				if(list1->next == NULL || compare_char(list1->value,list1->next->value) == 1)
+				{
+					list1_end = 1;
+				}
+				list1 = list1->next;
+			}
+			else
+			{
+				if(intermediate_reslut_list == NULL)
+				{
+					intermediate_reslut_list = list2;
+					resultList = intermediate_reslut_list;
+				}
+				else
+				{
+					intermediate_reslut_list->next = list2;
+					intermediate_reslut_list = intermediate_reslut_list->next;
+				}
+				if(list2->next == NULL || compare_char(list2->value,list2->next->value) == 1)
+				{
+					list2_end = 1;
+				}
+				list2 = list2->next;
+			}
+		}
+	}
+	return(resultList);
 }
